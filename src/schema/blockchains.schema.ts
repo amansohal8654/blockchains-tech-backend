@@ -2,7 +2,7 @@ import {object, string, TypeOf, number} from "zod";
 
 const payload = {
     body: object({
-        blockchainId: number({
+        id: number({
             required_error: "blockchain id is required please fill out the field name"
         }),
         name: string({
@@ -17,14 +17,13 @@ const payload = {
 const params = {
     params: object({
         blockchainId: string({
-            required_error: "productId is required"
+            required_error: "blockchainId is required"
         })
     })
 }
 
 export const addBlockchainSchema = object({
     ...payload,
-    ...params
 })
 
 export const readTokenSchema = object({

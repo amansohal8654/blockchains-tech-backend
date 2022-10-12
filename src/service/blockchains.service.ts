@@ -8,6 +8,8 @@ export async function addBlockchain(input: BlockchainInput){
     if(blockchain){
         getBlockchainsTokensAndSave(input.blockchainId)
         return blockchain;
+    } else {
+        return false;
     }
 }
 

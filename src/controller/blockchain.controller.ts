@@ -8,7 +8,9 @@ export async function createBlockchainHandler(
   res: Response
 ) {
   try {
-    const blockchain = await addBlockchain(req.body);
+    const body = req.body
+    const blockchain = await addBlockchain({blockchainId : body.id, name : body.name, imageUrl : body.imageUrl});
+    if(!blockchain) res.send("Blockchain already exists");
     return res.send(blockchain);
   } catch (err: any) {
     logger.error(err);
