@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { addBlockchainInput } from "../schema/blockchains.schema";
+import { addBlockchainInput, readTokenInput } from "../schema/blockchains.schema";
 import logger from "../utils/logger";
-import {addBlockchain, getListOFBlockchains} from "../service/blockchains.service"
+import {addBlockchain, getListOFBlockchains, getListOFTokens} from "../service/blockchains.service"
 
-export async function createUserHandler(
+export async function createBlockchainHandler(
   req: Request<{}, {}, addBlockchainInput["body"]>,
   res: Response
 ) {
@@ -23,4 +23,13 @@ export async function getBlockchains(req: Request, res: Response){
     } catch (err: any) {
         logger.error(err);
     }
+}
+
+export async function getBlockchainsTokens(req: Request<readTokenInput["params"]>, res: Response){
+    const blockchainId = req.params.blockchainId;
+    const blockchains = await getListOFTokens({blockchainId});
+
+    if(!blockchains) return res.sendStatus(404);
+
+    return res.send(blockchains);
 }
