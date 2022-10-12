@@ -8,7 +8,10 @@ Also if you go into  utils folder you will get all the useful files and methods.
 3) Run ```yarn install``` :- This will install all the packages 
 4) At the end run ```yarn dev```
 
+## routes.ts file
+This File have Five routes:-
 
+```
 http://localhost:3886/healthCheck 
 http://localhost:3886/getBlockchains
 http://localhost:3886/addBlockchain
